@@ -1,0 +1,34 @@
+.center-space {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-socials {
+  justify-content: flex-end;
+}
+.header-socials a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #212529;
+}
+
+.header-contact {
+  justify-content: flex-start;
+}
+.header-contact a {
+  color: #212529;
+  text-decoration: none;
+}
+
+.active {
+  border-bottom: solid orange 2px;
+  color: #fff;
+}/*# sourceMappingURL=navigation.css.map */

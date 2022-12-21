@@ -1,0 +1,26 @@
+@import "../style/_style.scss";
+
+.center-space{
+    @include flex-space-between;
+}
+.center{
+    @include flex-center;
+}
+.header-socials{
+    justify-content: flex-end;
+    a{
+        @include flex-center;
+        color:$dark-color;
+    }
+}
+.header-contact{
+    justify-content: flex-start;
+    a{
+        color: $dark-color;
+        text-decoration: none;
+    }
+}
+.active{
+    border-bottom:solid orange 2px;
+    color: #fff;
+}

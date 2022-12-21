@@ -2,3 +2,9 @@
     margin:0px;
     padding:0px;
 }
+.red{
+    border: solid red 2px;
+}
+.blue{
+    border:solid blue 2px;
+}
