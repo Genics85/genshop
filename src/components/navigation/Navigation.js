@@ -21,7 +21,7 @@ function Navigation() {
   return (
     <>
       <header className="bg-light d-none d-sm-block">
-        <Container fluid>
+        <Container>
           <Row className="header-info">
             <Col className="center gap-3 header-contact">
               <a className="center gap-1" href="nothing.com">
@@ -50,15 +50,23 @@ function Navigation() {
           </Row>
         </Container>
       </header>
-      <Navbar className="navbar" bg="dark" expand="lg" variant="dark" sticky="top">
-        <Container fluid>
+      <Navbar
+        className="navbar"
+        bg="dark"
+        expand="lg"
+        variant="dark"
+        sticky="top"
+      >
+        <Container>
           <Navbar.Brand href="#" className="d-flex gap-2 center">
             <img
               alt="brand logo"
               height={"38px"}
-              src="https://c8.alamy.com/comp/2D6FTN0/breaking-news-minimalistic-logo-icon-for-news-entertaining-show-sign-banner-vector-illustration-2D6FTN0.jpg"
+              src={
+                "https://cdn.dribbble.com/users/89278/screenshots/14699627/media/a9f2ce1335cc8f4868c109f1fdd9ec58.png?compress=1&resize=400x300"
+              }
             />
-            <h5>Breaking News</h5>
+            <h5>Shoppy</h5>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
@@ -70,31 +78,33 @@ function Navigation() {
               <Nav.Link as={NavLink} to="/">
                 Home
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/sports">Sports</Nav.Link>
+              <Nav.Link as={NavLink} to="/groceries">
+                Groceries
+              </Nav.Link>
 
-              <NavDropdown title="Finance" id="navbarScrollingDropdown">
-                <NavDropdown.Item as={Link} to="/crypto">
-                  Crypto
+              <NavDropdown title="Electronics" id="navbarScrollingDropdown">
+                <NavDropdown.Item as={Link} to="/laptops">
+                  Laptops
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/forex">
-                  Forex
+                <NavDropdown.Item as={Link} to="/phones">
+                  Phones
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/stocks">
-                  Stocks
+                <NavDropdown.Item as={Link} to="/drones">
+                  Drones
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item as={Link} to="/finance">
-                  General
+                <NavDropdown.Item as={Link} to="/accessories">
+                  Accessories
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link as={NavLink} to="/lifestyle">
-                Lifestyle
+              <Nav.Link as={NavLink} to="/health&beauty">
+                Health & Beauty
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/politics">
-                Politics
+              <Nav.Link as={NavLink} to="/fashion">
+                Fashion
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/socialmedia">
-                Social media
+              <Nav.Link as={NavLink} to="/home&office">
+                Home & Office
               </Nav.Link>
             </Nav>
             <Form className="d-flex">

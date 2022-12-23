@@ -1,12 +1,13 @@
 import "./App.css";
+import "./style/general.css";
 import Home from "./components/home/home";
-import LifeStyle from "./components/lifeStyle/LifeStyle";
 import Navigation from "./components/navigation/Navigation";
-import Politics from "./components/politics/Politics";
-import SocialMedia from "./components/socialMedia/SocialMedia";
-import Sports from "./components/sports/Sports";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Missing from "./components/missing/Missing";
+import Groceries from "./components/groceries/Groceries";
+import HealthAndBeauty from "./components/health&beauty/HealthAndBeauty";
+import Fashion from "./components/fashion/Fashion";
+import HomeAdnOffice from "./components/homeAndOffice/HomeAndOffice";
 
 function App() {
   return (
@@ -15,10 +16,10 @@ function App() {
         <Navigation />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/sports" element={<Sports />} />
-          <Route exact path="/politics" element={<Politics />} />
-          <Route exact path="/lifestyle" element={<LifeStyle />} />
-          <Route exact path="/socialmedia" element={<SocialMedia />} />
+          <Route exact path="/groceries" element={<Groceries />} />
+          <Route exact path="/health&beauty" element={<HealthAndBeauty/>} />
+          <Route exact path="/fashion" element={<Fashion/>} />
+          <Route exact path="/home&office" element={<HomeAdnOffice/>} />
           <Route path="*" element={<Missing />} />
         </Routes>
       </Router>

@@ -1,0 +1,10 @@
+@import "../../../style/style";
+
+.item-card{
+    border:none;
+    width: 12rem;
+    &:hover{
+        width: 12.04rem;
+        @include box-shadow;
+    }
+}

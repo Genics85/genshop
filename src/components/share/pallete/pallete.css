@@ -1,0 +1,12 @@
+.card-header {
+  background-color: #ffd166;
+}
+
+.items-container {
+  overflow: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.items-container::-webkit-scrollbar {
+  display: none;
+}/*# sourceMappingURL=pallete.css.map */

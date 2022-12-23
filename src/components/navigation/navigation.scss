@@ -1,4 +1,4 @@
-@import "../style/_style.scss";
+@import "../../style/_style.scss";
 
 .center-space{
     @include flex-space-between;
@@ -21,6 +21,6 @@
     }
 }
 .active{
-    border-bottom:solid orange 2px;
+    border-bottom:solid $accent-color 2px;
     color: #fff;
 }

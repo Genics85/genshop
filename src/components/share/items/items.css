@@ -1,0 +1,10 @@
+.item-card {
+  border: none;
+  width: 12rem;
+}
+.item-card:hover {
+  width: 12.04rem;
+  box-shadow: 0px 1px 27px -7px rgba(0, 0, 0, 0.24);
+  -webkit-box-shadow: 0px 1px 27px -7px rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0px 1px 27px -7px rgba(0, 0, 0, 0.24);
+}/*# sourceMappingURL=items.css.map */

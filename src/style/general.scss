@@ -1,0 +1,11 @@
+@import "./style";
+
+.center-space{
+    @include flex-space-between;
+}
+.center{
+    @include flex-center;
+}
+.end{
+    @include flex-end;
+}
