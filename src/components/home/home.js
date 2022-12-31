@@ -1,5 +1,5 @@
 import React from 'react'
-import "./home.css"
+import "./home.scss"
 import { Col, Container, Row } from 'react-bootstrap'
 import Pallete from '../share/pallete/Pallete'
 

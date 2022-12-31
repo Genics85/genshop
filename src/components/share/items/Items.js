@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Container, Row, Col } from "react-bootstrap";
-import "./items.css";
+import "./items.scss";
 
 function Items() {
   var description =

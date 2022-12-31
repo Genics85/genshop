@@ -2,12 +2,12 @@ import React from "react";
 import { Card, Container, NavLink, Row, Col } from "react-bootstrap";
 import { CaretRight } from "react-bootstrap-icons";
 import Items from "../items/Items";
-import "./pallete.css";
+import "./pallete.scss";
 function Pallete() {
   return (
     <>
       <Card>
-        <Card.Header className="center-space card-header">
+        <Card.Header className="center-space cardheader" style={{backgroundColor:"#ffd166"}}>
           <Container>
             <Row>
               <Col className="col-12 col-sm-9">
@@ -18,7 +18,7 @@ function Pallete() {
                   to="/groceries"
                   className="d-flex align-items-center end"
                 >
-                  <p className="mb-0 ">SEE ALL</p>
+                  <p className="mb-0 ">SEE ALL  </p>
                   <CaretRight />
                 </NavLink>
               </Col>

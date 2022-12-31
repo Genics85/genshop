@@ -14,7 +14,7 @@ import {
   Linkedin,
 } from "react-bootstrap-icons";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import "./navigation.css";
+import "./navigation.scss";
 import { Link, NavLink } from "react-router-dom";
 
 function Navigation() {
@@ -75,7 +75,7 @@ function Navigation() {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link as={NavLink} to="/">
+              <Nav.Link as={NavLink} to="">
                 Home
               </Nav.Link>
               <Nav.Link as={NavLink} to="/groceries">
