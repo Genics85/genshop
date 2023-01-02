@@ -1,5 +1,7 @@
 $dark-color: #212529;
 $accent-color: #ffd166;
+$deep-accent-color: #E4892B;
+$light-accent-color:#fff3db;
 
 @mixin flex-center {
   display: flex;
@@ -20,7 +22,7 @@ $accent-color: #ffd166;
   align-items: center;
 }
 @mixin box-shadow {
-  box-shadow: 0px 1px 27px -7px rgba(0,0,0,0.24);
-  -webkit-box-shadow: 0px 1px 27px -7px rgba(0,0,0,0.24);
-  -moz-box-shadow: 0px 1px 27px -7px rgba(0,0,0,0.24);
+  box-shadow: 0px 1px 27px -7px rgba(0, 0, 0, 0.24);
+  -webkit-box-shadow: 0px 1px 27px -7px rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0px 1px 27px -7px rgba(0, 0, 0, 0.24);
 }

@@ -7,7 +7,7 @@ function Pallete() {
   return (
     <>
       <Card>
-        <Card.Header className="center-space cardheader" style={{backgroundColor:"#ffd166"}}>
+        <Card.Header className="center-space cardheader">
           <Container>
             <Row>
               <Col className="col-12 col-sm-9">

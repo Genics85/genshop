@@ -58,3 +58,10 @@
 .right{
     height: 85%;
 }
+.form-check{
+  color:$deep-accent-color !important;
+  input{
+    background-color: $deep-accent-color !important;
+    border:none !important;
+  }
+}
