@@ -1,6 +1,7 @@
 import { React, useState, useRef, useContext, useEffect } from "react";
 import axios from "../../api/axios";
 import {
+  Alert,
   Button,
   Card,
   Col,
@@ -13,16 +14,17 @@ import { LockFill, PersonFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import "./login.scss";
 import AuthContext from "../../context/authContext";
+const LOGIN_URL = "/user/login";
 
 function Login() {
   const { setAuth } = useContext(AuthContext);
+
   const userRef = useRef();
-  const errRef = useRef();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
+  const [validated, setValidated] = useState(false);
+  const [err, setErr] = useState(false);
 
   useEffect(() => {
     userRef.current.focus();
@@ -31,10 +33,25 @@ function Login() {
   useEffect(() => {}, [email, password]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(email, password);
-    setEmail("");
-    setPassword("");
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+      setErr(true);
+      console.log(err);
+    } else {
+      try {
+        e.preventDefault();
+        const response = await axios.post(LOGIN_URL, { email, password });
+        console.log(response.data);
+        setEmail("");
+        setPassword("");
+      
+      } catch (error) {
+        console.log(`${error} occured`);
+      }
+    }
+    setValidated(true);
   };
 
   return (
@@ -51,7 +68,21 @@ function Login() {
           </Col>
           <Col className="right col-12 col-md-6 ">
             <Card className="loginCard h-100 center">
-              <Form onSubmit={handleSubmit} className="form w-75">
+              {err ? (
+                <Alert key={"login error"} variant={"danger"} onClose={()=>setErr(false)} dismissible>
+                  {" "}
+                  None of the fields can be left empty,make sure all fields are
+                  filled
+                </Alert>
+              ) : (
+                <></>
+              )}
+              <Form
+                noValidate
+                validated={validated}
+                onSubmit={handleSubmit}
+                className="form w-75"
+              >
                 <h4 className="mb-4 center form-title">USER LOGIN</h4>
                 <Form.Group className="email mb-3" controlId="emailGroup">
                   <div className="icon-textfield center gap-2">

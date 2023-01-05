@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState, useRef, useEffect } from "react";
 import {
   Button,
   Card,
@@ -7,12 +7,45 @@ import {
   Form,
   Image,
   Row,
+  Alert,
 } from "react-bootstrap";
 import { LockFill, Mailbox2, PersonFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import "./signup.scss";
+import axios from "../../api/axios";
+const SIGNUP_URL = "/user/signup";
 
 function Signup() {
+  const [validated, setValidated] = useState(false);
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [err, setErr] = useState(false);
+
+  const nameRef = useRef();
+
+  useEffect(() => {
+    nameRef.current.focus();
+  }, []);
+
+  const handleSubmit = async (e) => {
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+      setErr(true);
+    } else {
+      try {
+        e.preventDefault();
+        const response = await axios.post(SIGNUP_URL,{name,email,password});
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    setValidated(true);
+  };
+
   return (
     <div className="login center vh-100">
       <Container>
@@ -27,25 +60,54 @@ function Signup() {
           </Col>
           <Col className="right col-12 col-md-6 ">
             <Card className="loginCard h-100 center">
-              <Form className="form w-75">
+              {err ? (
+                <Alert
+                  key={"login error"}
+                  variant={"danger"}
+                  onClose={() => setErr(false)}
+                  dismissible
+                >
+                  {" "}
+                  None of the fields can be left empty,make sure all fields are
+                  filled
+                </Alert>
+              ) : (
+                <></>
+              )}
+              <Form
+                noValidate
+                validated={validated}
+                onSubmit={handleSubmit}
+                className="form w-75"
+              >
                 <h4 className="mb-4 center form-title">SIGN UP</h4>
-                <Form.Group className="email mb-3" controlId="emailGroup">
+                <Form.Group className="name mb-3" controlId="nameGroup">
                   <div className="icon-textfield center gap-2">
                     <PersonFill className="login-icon" />
                     <Form.Control
-                      type="email"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      ref={nameRef}
+                      type="text"
                       className="form-control shadow-none"
                       placeholder="Enter your name"
+                      required
                     />
                   </div>
+                  <Form.Control.Feedback type="invalid">
+                    Please name cannot be empty
+                  </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group className="email mb-3" controlId="nameGroup">
                   <div className="icon-textfield center gap-2">
                     <Mailbox2 className="login-icon" />
                     <Form.Control
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       type="email"
                       className="form-control shadow-none"
                       placeholder="Enter your email"
+                      required
                     />
                   </div>
                 </Form.Group>
@@ -56,16 +118,21 @@ function Signup() {
                   <div className="icon-textfield center gap-2">
                     <LockFill className="login-icon" />
                     <Form.Control
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       className="input shadow-none"
                       type="password"
                       placeholder="Enter your password"
+                      required
                     />
                   </div>
                 </Form.Group>
                 <Form.Group className="terms mb-3 center shadow-none">
-                  <Form.Check label="I agree with terms and conditions" />
+                  <Form.Check
+                    required
+                    label="I agree with terms and conditions"
+                  />
                 </Form.Group>
-
                 <Form.Group
                   className="submit-button mb-3 center"
                   controlId="submitId-login"
@@ -76,7 +143,10 @@ function Signup() {
                   className="create-account mb-3 center"
                   controlId="createAccount"
                 >
-                  <Link className="login-link" to="/login" > Login</Link>
+                  <Link className="login-link" to="/login">
+                    {" "}
+                    Login
+                  </Link>
                 </Form.Group>
               </Form>
             </Card>
