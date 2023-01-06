@@ -42,7 +42,9 @@ function Login() {
     } else {
       try {
         e.preventDefault();
+
         const response = await axios.post(LOGIN_URL, { email, password });
+        
         console.log(response.data);
         setEmail("");
         setPassword("");
