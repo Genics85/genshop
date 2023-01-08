@@ -8,6 +8,7 @@ import HomeAdnOffice from "../components/homeAndOffice/HomeAndOffice";
 import Login from "../components/login/Login";
 import Signup from "../components/signup/Signup";
 import LandingPage from "../components/landingPage/LandingPage";
+import NewProduct from "../components/newProduct/NewProduct";
 
 export const EntryRouting = () => {
   return (
@@ -15,6 +16,7 @@ export const EntryRouting = () => {
       <Routes>
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/newproduct" element={<NewProduct/>}/>
         <Route exact path="/" element={<LandingPage />}>
           <Route exact path="" element={<Home />} />
           <Route exact path="groceries" element={<Groceries />} />
