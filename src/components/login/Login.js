@@ -11,12 +11,13 @@ import {
   Row,
 } from "react-bootstrap";
 import { LockFill, PersonFill } from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.scss";
 import AuthContext from "../../context/authContext";
 const LOGIN_URL = "/user/login";
 
 function Login() {
+  const navigate = useNavigate();
   const { setAuth } = useContext(AuthContext);
 
   const userRef = useRef();
@@ -25,12 +26,23 @@ function Login() {
   const [password, setPassword] = useState("");
   const [validated, setValidated] = useState(false);
   const [err, setErr] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
 
   useEffect(() => {
     userRef.current.focus();
   }, []);
 
   useEffect(() => {}, [email, password]);
+  
+  const handleEmail=(e)=>{
+    setEmail(e.target.value);
+    setErr(false);
+  }
+
+  const handlePassword=(e)=>{
+    setPassword(e.target.value);
+    setErr(false);
+  }
 
   const handleSubmit = async (e) => {
     const form = e.currentTarget;
@@ -38,19 +50,28 @@ function Login() {
       e.preventDefault();
       e.stopPropagation();
       setErr(true);
-      console.log(err);
+      setErrMsg("Check your login information");
     } else {
       try {
         e.preventDefault();
-
         const response = await axios.post(LOGIN_URL, { email, password });
-        
+        const accessToken = response?.data?.accessToken;
+        const role = response?.data?.role;
         console.log(response.data);
+        setAuth({ email, password, role, accessToken });
         setEmail("");
         setPassword("");
-      
+        navigate("/");
       } catch (error) {
-        console.log(`${error} occured`);
+        setErr(true);
+        if (!error?.response) {
+          setErrMsg("No server response");
+        } else if (error?.response.data.msg) {
+          const msg = error.response.data.msg;
+          setErrMsg(msg);
+        } else {
+          setErrMsg("Login failed");
+        }
       }
     }
     setValidated(true);
@@ -71,10 +92,13 @@ function Login() {
           <Col className="right col-12 col-md-6 ">
             <Card className="loginCard h-100 center">
               {err ? (
-                <Alert key={"login error"} variant={"danger"} onClose={()=>setErr(false)} dismissible>
-                  {" "}
-                  None of the fields can be left empty,make sure all fields are
-                  filled
+                <Alert
+                  key={"login error"}
+                  variant={"danger"}
+                  onClose={() => setErr(false)}
+                  dismissible
+                >
+                  {errMsg}
                 </Alert>
               ) : (
                 <></>
@@ -92,7 +116,7 @@ function Login() {
                     <Form.Control
                       ref={userRef}
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={handleEmail}
                       type="email"
                       className="form-control shadow-none"
                       placeholder="Enter your email"
@@ -108,7 +132,7 @@ function Login() {
                     <LockFill className="login-icon" />
                     <Form.Control
                       value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={handlePassword}
                       className="input shadow-none"
                       type="password"
                       placeholder="Enter your password"

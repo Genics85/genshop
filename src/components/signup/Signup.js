@@ -10,7 +10,7 @@ import {
   Alert,
 } from "react-bootstrap";
 import { LockFill, Mailbox2, PersonFill } from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./signup.scss";
 import axios from "../../api/axios";
 const SIGNUP_URL = "/user/signup";
@@ -21,12 +21,27 @@ function Signup() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [err, setErr] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
 
+  const navigate = useNavigate();
   const nameRef = useRef();
 
   useEffect(() => {
     nameRef.current.focus();
   }, []);
+
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+    setErr(false);
+  };
+  const handlePassword = (e)=>{
+    setPassword(e.target.value);
+    setErr(false);
+  }
+  const handleName = (e)=>{
+    setName(e.target.value);
+    setErr(false);
+  }
 
   const handleSubmit = async (e) => {
     const form = e.currentTarget;
@@ -34,13 +49,26 @@ function Signup() {
       e.preventDefault();
       e.stopPropagation();
       setErr(true);
+      setErrMsg("All the fields are required");
     } else {
       try {
         e.preventDefault();
-        const response = await axios.post(SIGNUP_URL,{name,email,password});
-        console.log(response);
+        const response = await axios.post(SIGNUP_URL, {
+          name,
+          email,
+          password,
+        });
+        navigate("/login");
       } catch (error) {
-        console.log(error);
+        setErr(true);
+        if (!error?.response) {
+          setErrMsg("No server response");
+        } else if (error.response) {
+          const msg = error.response.data.msg;
+          setErrMsg(msg);
+        } else {
+          setErrMsg("Couldn't sign up");
+        }
       }
     }
     setValidated(true);
@@ -67,9 +95,7 @@ function Signup() {
                   onClose={() => setErr(false)}
                   dismissible
                 >
-                  {" "}
-                  None of the fields can be left empty,make sure all fields are
-                  filled
+                  {errMsg}
                 </Alert>
               ) : (
                 <></>
@@ -86,7 +112,7 @@ function Signup() {
                     <PersonFill className="login-icon" />
                     <Form.Control
                       value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      onChange={handleName}
                       ref={nameRef}
                       type="text"
                       className="form-control shadow-none"
@@ -103,7 +129,7 @@ function Signup() {
                     <Mailbox2 className="login-icon" />
                     <Form.Control
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={handleEmail}
                       type="email"
                       className="form-control shadow-none"
                       placeholder="Enter your email"
@@ -119,7 +145,7 @@ function Signup() {
                     <LockFill className="login-icon" />
                     <Form.Control
                       value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={handlePassword}
                       className="input shadow-none"
                       type="password"
                       placeholder="Enter your password"
