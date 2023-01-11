@@ -9,6 +9,8 @@ import Login from "../components/login/Login";
 import Signup from "../components/signup/Signup";
 import LandingPage from "../components/landingPage/LandingPage";
 import NewProduct from "../components/newProduct/NewProduct";
+import RequireAuth from "./RequireAuth";
+import UnAuthorized from "../components/unAuthorized/UnAuthorized";
 
 export const EntryRouting = () => {
   return (
@@ -16,14 +18,24 @@ export const EntryRouting = () => {
       <Routes>
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
-        <Route exact path="/newproduct" element={<NewProduct/>}/>
-        <Route exact path="/" element={<LandingPage />}>
-          <Route exact path="" element={<Home />} />
-          <Route exact path="groceries" element={<Groceries />} />
-          <Route exact path="health&beauty" element={<HealthAndBeauty />} />
-          <Route exact path="fashion" element={<Fashion />} />
-          <Route exact path="home&office" element={<HomeAdnOffice />} />
+
+        <Route element={<RequireAuth allowedRoles={["admin"]} />}>
+          <Route exact path="/newproduct" element={<NewProduct />} />
         </Route>
+
+        <Route
+          element={<RequireAuth allowedRoles={["user", "admin", "seller"]} />}
+        >
+          <Route exact path="/" element={<LandingPage />}>
+            <Route exact path="" element={<Home />} />
+            <Route exact path="groceries" element={<Groceries />} />
+            <Route exact path="health&beauty" element={<HealthAndBeauty />} />
+            <Route exact path="fashion" element={<Fashion />} />
+            <Route exact path="home&office" element={<HomeAdnOffice />} />
+          </Route>
+        </Route>
+
+        <Route exact path="/unathorized" element={<UnAuthorized />} />
         <Route exact path="*" element={<Missing />} />
       </Routes>
     </Router>

@@ -11,13 +11,16 @@ import {
   Row,
 } from "react-bootstrap";
 import { LockFill, PersonFill } from "react-bootstrap-icons";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./login.scss";
 import AuthContext from "../../context/authContext";
 const LOGIN_URL = "/user/login";
 
 function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const { setAuth } = useContext(AuthContext);
 
   const userRef = useRef();
@@ -33,16 +36,16 @@ function Login() {
   }, []);
 
   useEffect(() => {}, [email, password]);
-  
-  const handleEmail=(e)=>{
+
+  const handleEmail = (e) => {
     setEmail(e.target.value);
     setErr(false);
-  }
+  };
 
-  const handlePassword=(e)=>{
+  const handlePassword = (e) => {
     setPassword(e.target.value);
     setErr(false);
-  }
+  };
 
   const handleSubmit = async (e) => {
     const form = e.currentTarget;
@@ -61,7 +64,7 @@ function Login() {
         setAuth({ email, password, role, accessToken });
         setEmail("");
         setPassword("");
-        navigate("/");
+        navigate(from, { replace: true });
       } catch (error) {
         setErr(true);
         if (!error?.response) {
