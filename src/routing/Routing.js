@@ -35,7 +35,7 @@ export const EntryRouting = () => {
           </Route>
         </Route>
 
-        <Route exact path="/unathorized" element={<UnAuthorized />} />
+        <Route exact path="/unauthorized" element={<UnAuthorized />} />
         <Route exact path="*" element={<Missing />} />
       </Routes>
     </Router>
