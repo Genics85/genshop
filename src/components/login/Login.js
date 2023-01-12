@@ -62,7 +62,6 @@ function Login() {
         const role = response?.data?.role;
         const authEmail = response?.data?.email;
         setAuth({ email: authEmail, role: role, refreshToken: refreshToken });
-
         setEmail("");
         setPassword("");
         navigate(from, { replace: true });
