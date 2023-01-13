@@ -58,10 +58,10 @@ function Login() {
       try {
         e.preventDefault();
         const response = await axios.post(LOGIN_URL, { email, password });
-        const refreshToken = response?.data?.refreshToken;
+        const accessToken = response?.data?.accessToken;
         const role = response?.data?.role;
         const authEmail = response?.data?.email;
-        setAuth({ email: authEmail, role: role, refreshToken: refreshToken });
+        setAuth({ email: authEmail, role: role, accessToken: accessToken });
         setEmail("");
         setPassword("");
         navigate(from, { replace: true });
