@@ -23,9 +23,9 @@ export const EntryRouting = () => {
           <Route exact path="/newproduct" element={<NewProduct />} />
         </Route>
 
-        <Route
+        {/* <Route
           element={<RequireAuth allowedRoles={["user", "admin", "seller"]} />}
-        >
+        > */}
           <Route exact path="/" element={<LandingPage />}>
             <Route exact path="" element={<Home />} />
             <Route exact path="groceries" element={<Groceries />} />
@@ -33,7 +33,7 @@ export const EntryRouting = () => {
             <Route exact path="fashion" element={<Fashion />} />
             <Route exact path="home&office" element={<HomeAdnOffice />} />
           </Route>
-        </Route>
+        {/* </Route> */}
 
         <Route exact path="/unauthorized" element={<UnAuthorized />} />
         <Route exact path="*" element={<Missing />} />
