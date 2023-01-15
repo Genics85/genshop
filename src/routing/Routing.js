@@ -11,6 +11,7 @@ import LandingPage from "../components/landingPage/LandingPage";
 import NewProduct from "../components/newProduct/NewProduct";
 import RequireAuth from "./RequireAuth";
 import UnAuthorized from "../components/unAuthorized/UnAuthorized";
+import Product from "../components/product/Product";
 
 export const EntryRouting = () => {
   return (
@@ -32,6 +33,7 @@ export const EntryRouting = () => {
             <Route exact path="health&beauty" element={<HealthAndBeauty />} />
             <Route exact path="fashion" element={<Fashion />} />
             <Route exact path="home&office" element={<HomeAdnOffice />} />
+            <Route exact path="product" element={<Product/>}/>
           </Route>
         {/* </Route> */}
 
