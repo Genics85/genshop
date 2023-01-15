@@ -1,12 +1,19 @@
-import React from "react";
+import {useNavigate} from "react-router-dom";
 import { Card, Container, Row, Col } from "react-bootstrap";
 import "./items.scss";
 
 function Items() {
+
+  const navigate = useNavigate();
+  const handleClick=()=>{
+    console.log("item clicked");
+    navigate("/product")
+  }
+
   var description =
     "Something is supposed to be here before the whole work is complete in my opinion";
   return (
-    <Container fluid className="px-0">
+    <Container fluid className="px-0" onClick={handleClick}>
       <Row className="no-gutters px-0">
         <Col >
           <Card className="item-card">

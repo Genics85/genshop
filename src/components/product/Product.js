@@ -56,7 +56,7 @@ function Product() {
                 </span>
               </div>
               <div className="guarantee d-flex gap-2">
-                <HandThumbsUp size={"2.5rem"} />
+                <HandThumbsUp size={"40px"} />
                 <span className="desc">
                   LIFETIME
                   <br /> GUANRANTEE
