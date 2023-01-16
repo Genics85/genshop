@@ -12,6 +12,7 @@ import NewProduct from "../components/newProduct/NewProduct";
 import RequireAuth from "./RequireAuth";
 import UnAuthorized from "../components/unAuthorized/UnAuthorized";
 import Product from "../components/product/Product";
+import Cart from "../components/cart/Cart";
 
 export const EntryRouting = () => {
   return (
@@ -34,6 +35,7 @@ export const EntryRouting = () => {
             <Route exact path="fashion" element={<Fashion />} />
             <Route exact path="home&office" element={<HomeAdnOffice />} />
             <Route exact path="product" element={<Product/>}/>
+            <Route exact path="cart" element={<Cart/>}/>
           </Route>
         {/* </Route> */}
 
