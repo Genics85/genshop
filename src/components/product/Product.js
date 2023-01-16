@@ -19,7 +19,7 @@ function Product() {
     setNumber(number - 1);
   };
   return (
-    <main className="vh-100 pt-5">
+    <main className="product pt-5">
       <Container>
         <Row>
           <Col className="col-12 col-lg-7 center flex-column">

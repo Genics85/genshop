@@ -25,12 +25,12 @@ function CartItem() {
         <h5>Golden Morn</h5>
       </div>
       <div className="number-button d-flex gap-2">
-        <Button className="number-change" onClick={handleRemove}>
-          <Dash size={"20px"} />
-        </Button>
-        <h5>{counter}</h5>
         <Button className="number-change" onClick={handleAdd}>
           <Plus size={"20px"}/>
+        </Button>
+        <h5>{counter}</h5>
+        <Button className="number-change" onClick={handleRemove}>
+          <Dash size={"20px"} />
         </Button>
       </div>
       <h5>$2.99</h5>
