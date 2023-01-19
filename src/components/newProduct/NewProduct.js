@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./newproduct.scss";
 import { Container, Col, Row, Form, Card, Button } from "react-bootstrap";
 
 function NewProduct() {
+  const [name,setName]=useState("");
+  const [price,setPrice]=useState("");
+  const [category,setCategory]=("");
+  const [image,setImage]=("");
+
   return (
     <div className="vh-100 center newproduct">
       <Container className="">

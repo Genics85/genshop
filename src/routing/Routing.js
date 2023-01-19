@@ -21,9 +21,9 @@ export const EntryRouting = () => {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
 
-        <Route element={<RequireAuth allowedRoles={["admin"]} />}>
+        {/* <Route element={<RequireAuth allowedRoles={["admin"]} />}> */}
           <Route exact path="/newproduct" element={<NewProduct />} />
-        </Route>
+        {/* </Route> */}
 
         {/* <Route
           element={<RequireAuth allowedRoles={["user", "admin", "seller"]} />}
