@@ -8,6 +8,17 @@ function NewProduct() {
   const [category,setCategory]=("");
   const [image,setImage]=("");
 
+  const handleName=(e)=>{
+    setName(e.target.value);
+  }
+  const handleImage=(e)=>{
+    setImage("");
+  }
+
+  const handleSelect=(e)=>{
+    setCategory(e.target.value);
+  }
+
   return (
     <div className="vh-100 center newproduct">
       <Container className="">
@@ -19,6 +30,7 @@ function NewProduct() {
                 <Form.Group className="mb-3">
                   <Form.Label>Name:</Form.Label>
                   <Form.Control
+                  value={name}
                     type="text"
                     placeholder="Enter Item name"
                     required
@@ -28,6 +40,7 @@ function NewProduct() {
                   <Form.Label>Price:</Form.Label>
 
                   <Form.Control
+                  value={price}
                     type="text"
                     placeholder="Enter product price"
                     required
@@ -35,7 +48,7 @@ function NewProduct() {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label>Select Category</Form.Label>
-                  <Form.Select>
+                  <Form.Select onSelect={handleSelect}>
                     <option>Select product Category from here</option>
                     <option value="fashion">Fashion</option>
                     <option value="homeandoffice">Home & office</option>
