@@ -6,18 +6,24 @@ function NewProduct() {
   const [name,setName]=useState("");
   const [price,setPrice]=useState("");
   const [category,setCategory]=("");
-  const [image,setImage]=("");
+  const [image,setImage]=(null);
 
+  
   const handleName=(e)=>{
     setName(e.target.value);
   }
-  const handleImage=(e)=>{
-    setImage("");
+  const handlePrice=(e)=>{
+    setPrice(e.target.value);
   }
-
+  const handleImage=(e)=>{
+    setImage(e.target.files[0]);
+    const formData= new FormData();
+    formData.append("image",image);
+  }
   const handleSelect=(e)=>{
     setCategory(e.target.value);
   }
+  
 
   return (
     <div className="vh-100 center newproduct">
@@ -34,6 +40,7 @@ function NewProduct() {
                     type="text"
                     placeholder="Enter Item name"
                     required
+                    onChange={handleName}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3">
@@ -44,11 +51,12 @@ function NewProduct() {
                     type="text"
                     placeholder="Enter product price"
                     required
+                    onChange={handlePrice}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label>Select Category</Form.Label>
-                  <Form.Select onSelect={handleSelect}>
+                  <Form.Select onChange={handleSelect}>
                     <option>Select product Category from here</option>
                     <option value="fashion">Fashion</option>
                     <option value="homeandoffice">Home & office</option>
@@ -59,7 +67,7 @@ function NewProduct() {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label>Select the image of the product</Form.Label>
-                  <Form.Control type="file" required />
+                  <Form.Control type="file" accept="image/*" required onChange={handleImage}/>
                 </Form.Group>
                 <Form.Group className="mb-3 center">
                   <Button type="submit">Add Product</Button>
