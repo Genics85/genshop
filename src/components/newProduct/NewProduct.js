@@ -5,33 +5,40 @@ import { Container, Col, Row, Form, Card, Button } from "react-bootstrap";
 function NewProduct() {
   const [name,setName]=useState("");
   const [price,setPrice]=useState("");
-  const [category,setCategory]=("");
-  const [image,setImage]=(null);
-
+  const [category,setCategory]=useState("");
+  const [image,setImage]= useState(null);
+  
   
   const handleName=(e)=>{
     setName(e.target.value);
+    console.log(`the name is ${name}`);
   }
   const handlePrice=(e)=>{
     setPrice(e.target.value);
+    console.log(`the price is ${price}`);
   }
   const handleImage=(e)=>{
     setImage(e.target.files[0]);
-    const formData= new FormData();
-    formData.append("image",image);
   }
   const handleSelect=(e)=>{
     setCategory(e.target.value);
+    console.log(`the category is ${category}`);
   }
   
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    const formData= new FormData();
+    formData.append("image",image);
 
+  }
+  
   return (
     <div className="vh-100 center newproduct">
       <Container className="">
         <Row className="">
           <Col className=" center">
             <Card className="form-card">
-              <Form className="p-5">
+              <Form className="p-5" onSubmit={handleSubmit}>
                 <h4 className="center">Add New Product</h4>
                 <Form.Group className="mb-3">
                   <Form.Label>Name:</Form.Label>
@@ -57,7 +64,6 @@ function NewProduct() {
                 <Form.Group className="mb-3">
                   <Form.Label>Select Category</Form.Label>
                   <Form.Select onChange={handleSelect}>
-                    <option>Select product Category from here</option>
                     <option value="fashion">Fashion</option>
                     <option value="homeandoffice">Home & office</option>
                     <option value="grocery">Grocery</option>
