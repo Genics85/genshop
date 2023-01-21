@@ -12,7 +12,7 @@ import {
   Instagram,
   Twitter,
   Linkedin,
-  Cart3
+  Cart3,
 } from "react-bootstrap-icons";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "./navigation.scss";
@@ -69,7 +69,9 @@ function Navigation() {
             />
             <h5>Shoppy</h5>
           </Navbar.Brand>
-          <Cart3 size={"30px"} className="text-white"/>
+          <Link to="/cart">
+            <Cart3 size={"30px"} className="text-white" />
+          </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
 
           <Navbar.Collapse id="navbarScroll">
@@ -120,7 +122,6 @@ function Navigation() {
               <Button variant="outline-light">Search</Button>
             </Form>
           </Navbar.Collapse>
-          
         </Container>
       </Navbar>
     </>
