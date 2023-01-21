@@ -12,6 +12,7 @@ import {
   Instagram,
   Twitter,
   Linkedin,
+  Cart3
 } from "react-bootstrap-icons";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "./navigation.scss";
@@ -68,7 +69,9 @@ function Navigation() {
             />
             <h5>Shoppy</h5>
           </Navbar.Brand>
+          <Cart3 size={"30px"} className="text-white"/>
           <Navbar.Toggle aria-controls="navbarScroll" />
+
           <Navbar.Collapse id="navbarScroll">
             <Nav
               className="me-auto my-2 my-lg-0"
@@ -110,13 +113,14 @@ function Navigation() {
             <Form className="d-flex">
               <Form.Control
                 type="search"
-                placeholder="Search for news"
+                placeholder="Search for items"
                 className="me-2"
                 aria-label="Search"
               />
               <Button variant="outline-light">Search</Button>
             </Form>
           </Navbar.Collapse>
+          
         </Container>
       </Navbar>
     </>
