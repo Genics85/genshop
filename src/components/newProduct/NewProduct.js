@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./newproduct.scss";
-import { Container, Col, Row, Form, Card, Button } from "react-bootstrap";
+import { Container, Col, Row, Form, Card, Button, Alert } from "react-bootstrap";
+import axios from "../../api/axios";
 
 function NewProduct() {
   const [name,setName]=useState("");
@@ -8,27 +9,37 @@ function NewProduct() {
   const [category,setCategory]=useState("");
   const [image,setImage]= useState(null);
   
+  const formData= new FormData();
+  formData.append("image",image);
+  formData.append("name",name);
+  formData.append("price",price);
+  formData.append("category",category)
   
   const handleName=(e)=>{
     setName(e.target.value);
-    console.log(`the name is ${name}`);
   }
   const handlePrice=(e)=>{
     setPrice(e.target.value);
-    console.log(`the price is ${price}`);
   }
   const handleImage=(e)=>{
     setImage(e.target.files[0]);
   }
   const handleSelect=(e)=>{
     setCategory(e.target.value);
-    console.log(`the category is ${category}`);
   }
   
-  const handleSubmit=(e)=>{
+  const handleSubmit=async(e)=>{
     e.preventDefault();
-    const formData= new FormData();
-    formData.append("image",image);
+    const config={
+      headrs:{
+        'content-type':'multipart/form-data'
+      }
+    };
+    try {
+      const response = await axios.post("/product/upload",formData,config);
+    } catch (error) {
+      console.log(error)
+    }
 
   }
   
