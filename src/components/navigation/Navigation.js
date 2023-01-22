@@ -69,8 +69,9 @@ function Navigation() {
             />
             <h5>Shoppy</h5>
           </Navbar.Brand>
-          <Link to="/cart">
-            <Cart3 size={"30px"} className="text-white" />
+          <Link to="/cart" className="cart-button d-block d-lg-none">
+            <Cart3 size={"30px"} className=" cart-icon text-white mx-2" />
+            <span className="cart-badge center">4</span>
           </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
 
@@ -122,6 +123,10 @@ function Navigation() {
               <Button variant="outline-light">Search</Button>
             </Form>
           </Navbar.Collapse>
+          <Link to="/cart" className="cart-button d-none d-lg-block">
+            <Cart3 size={"30px"} className=" cart-icon text-white mx-2" />
+            <span className="cart-badge center">3</span>
+          </Link>
         </Container>
       </Navbar>
     </>

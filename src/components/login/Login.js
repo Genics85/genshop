@@ -121,7 +121,7 @@ function Login() {
                       value={email}
                       onChange={handleEmail}
                       type="email"
-                      className="form-control shadow-none"
+                      className="login-form-control shadow-none"
                       placeholder="Enter your email"
                       required
                     />

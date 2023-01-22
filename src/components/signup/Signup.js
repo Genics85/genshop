@@ -115,7 +115,7 @@ function Signup() {
                       onChange={handleName}
                       ref={nameRef}
                       type="text"
-                      className="form-control shadow-none"
+                      className="signup-form-control shadow-none"
                       placeholder="Enter your name"
                       required
                     />
@@ -131,7 +131,7 @@ function Signup() {
                       value={email}
                       onChange={handleEmail}
                       type="email"
-                      className="form-control shadow-none"
+                      className="signup-form-control shadow-none"
                       placeholder="Enter your email"
                       required
                     />
@@ -146,7 +146,7 @@ function Signup() {
                     <Form.Control
                       value={password}
                       onChange={handlePassword}
-                      className="input shadow-none"
+                      className="input shadow-none signup-form-control"
                       type="password"
                       placeholder="Enter your password"
                       required
