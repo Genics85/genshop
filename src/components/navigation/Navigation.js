@@ -81,10 +81,10 @@ function Navigation() {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link as={NavLink} to="">
+              <Nav.Link as={NavLink} to="" >
                 Home
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/groceries">
+              <Nav.Link as={NavLink} to="/groceries" state={{you:"This is eugene"}}>
                 Groceries
               </Nav.Link>
 
@@ -123,7 +123,7 @@ function Navigation() {
               <Button variant="outline-light">Search</Button>
             </Form>
           </Navbar.Collapse>
-          <Link to="/cart" className="cart-button d-none d-lg-block">
+          <Link to="/cart" className="cart-button d-none d-lg-block mx-3">
             <Cart3 size={"30px"} className=" cart-icon text-white mx-2" />
             <span className="cart-badge center">3</span>
           </Link>
