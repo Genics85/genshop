@@ -103,10 +103,10 @@ function NewProduct() {
                   <Form.Label>Select Category</Form.Label>
                   <Form.Select onChange={handleSelect}>
                     <option value="fashion">Fashion</option>
-                    <option value="homeandoffice">Home & office</option>
+                    <option value="home">Home & office</option>
                     <option value="grocery">Grocery</option>
                     <option value="electronics">electronics</option>
-                    <option value="healthandbeauty">Health & Beauty</option>
+                    <option value="health">Health & Beauty</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
