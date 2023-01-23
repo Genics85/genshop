@@ -1,16 +1,26 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "../../api/axios";
+import SingleProduct from "../singleProduct/SingleProduct";
 
 function Shelve() {
+ const [items,setItems]=useState([]);
+
   const getProducts = async () => {
-    const response = axios.get("/product/grocery");
-    console.log(response);
+    const response = await axios.get("/product/grocery");
+    setItems(response.data);
+    console.log(items);
   };
 
   useEffect(() => {
     getProducts();
   }, []);
-  return <div>Shelve</div>;
+  return (
+    <div>
+      {
+        
+      }
+    </div>
+  );
 }
 
 export default Shelve;
