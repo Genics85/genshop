@@ -14,7 +14,6 @@ import {
   Linkedin,
   Cart3,
 } from "react-bootstrap-icons";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import "./navigation.scss";
 import { Link, NavLink } from "react-router-dom";
 
@@ -84,32 +83,20 @@ function Navigation() {
               <Nav.Link as={NavLink} to="" >
                 Home
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/groceries" state={{you:"This is eugene"}}>
+              <Nav.Link as={NavLink} to="/groceries" state={{category:"grocery"}}>
                 Groceries
               </Nav.Link>
+              <Nav.Link as={NavLink} to="/electronics" state={{category:"electronics"}}>
+                Electronics
+              </Nav.Link>
 
-              <NavDropdown title="Electronics" id="navbarScrollingDropdown">
-                <NavDropdown.Item as={Link} to="/laptops">
-                  Laptops
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/phones">
-                  Phones
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/drones">
-                  Drones
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item as={Link} to="/accessories">
-                  Accessories
-                </NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link as={NavLink} to="/health&beauty">
+              <Nav.Link as={NavLink} to="/health&beauty" state={{category:"health"}}>
                 Health & Beauty
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/fashion">
+              <Nav.Link as={NavLink} to="/fashion" state={{category:"fashion"}}>
                 Fashion
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/home&office">
+              <Nav.Link as={NavLink} to="/home&office" state={{category:"home"}} >
                 Home & Office
               </Nav.Link>
             </Nav>

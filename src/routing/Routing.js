@@ -13,7 +13,7 @@ import RequireAuth from "./RequireAuth";
 import UnAuthorized from "../components/unAuthorized/UnAuthorized";
 import Product from "../components/product/Product";
 import Cart from "../components/cart/Cart";
-import Shelve from "../components/shelve/Shelve";
+import Electronics from "../components/electronics/Electronics";
 
 export const EntryRouting = () => {
   return (
@@ -31,13 +31,13 @@ export const EntryRouting = () => {
         > */}
           <Route exact path="/" element={<LandingPage />}>
             <Route exact path="" element={<Home />} />
-            <Route exact path="/products" element={<Shelve/>}/>
-            {/* <Route exact path="groceries" element={<Groceries />} />
+            <Route exact path="groceries" element={<Groceries />} />
+            <Route exaxt path="electronics" element={<Electronics/>}/>
             <Route exact path="health&beauty" element={<HealthAndBeauty />} />
             <Route exact path="fashion" element={<Fashion />} />
             <Route exact path="home&office" element={<HomeAdnOffice />} />
             <Route exact path="product" element={<Product/>}/>
-            <Route exact path="cart" element={<Cart/>}/> */}
+            <Route exact path="cart" element={<Cart/>}/>
           </Route>
         {/* </Route> */}
 
