@@ -1,34 +1,31 @@
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Card, Container, Row, Col } from "react-bootstrap";
 import "./items.scss";
 
-function Items() {
-
+function Items({name,price,img}) {
   const navigate = useNavigate();
-  const handleClick=()=>{
-    console.log("item clicked");
-    navigate("/product")
-  }
 
-  var description =
-    "Something is supposed to be here before the whole work is complete in my opinion";
+  const handleClick = () => {
+    navigate("/product",{items:{name,price,img}});
+  };
+
   return (
     <Container fluid className="px-0" onClick={handleClick}>
       <Row className="no-gutters px-0">
-        <Col >
+        <Col>
           <Card className="item-card">
             <Card.Img
               variant="top"
-              width={"40px"}
-              src="https://gh.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/06/004223/1.jpg?0775"
+              style={{ height: "150px" }}
+              width={"40%"}
+              src={img}
             />
-            <Card.Body>
-              <Card.Text>
-                {description.length > 25
-                  ? `${description.slice(0, 25)}...`
-                  : description}
-              </Card.Text>
-              <h5>GH₵‎ 2.99</h5>
+
+            <Card.Body className="center">
+              <div className="span-texts center">
+                <span>{name}</span>
+                <span>GH₵{price}</span>
+              </div>
             </Card.Body>
           </Card>
         </Col>

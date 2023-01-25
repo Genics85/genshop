@@ -4,7 +4,7 @@ import { Card, Col, Image, Button } from "react-bootstrap";
 
 function SingleProduct({name,price,img}) {
   return (
-    <div>
+    <div className="center">
           <Col className="col-11">
             <Card className="center py-4">
               <Image

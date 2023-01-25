@@ -6,18 +6,25 @@ import {
   Plus,
   Truck,
 } from "react-bootstrap-icons";
+import {useLocation} from "react-router-dom";
 import { useState } from "react";
 import "./product.scss";
 function Product() {
+
+  const location=useLocation();
+  const {items}=location;
+
   const [number, setNumber] = useState(0);
 
   const handleAdd = () => {
     setNumber(number + 1);
+    console.log(items)
   };
   const handleRemove = () => {
     if (number < 1) return;
     setNumber(number - 1);
   };
+
   return (
     <main className="product pt-5">
       <Container>

@@ -1,23 +1,21 @@
-import { useState } from "react";
 import { Card, Container, Row, Col } from "react-bootstrap";
-import { NavLink,useNavigate } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import { CaretRight } from "react-bootstrap-icons";
 import Items from "../items/Items";
 import "./pallete.scss";
-function Pallete() {
-  const[category,setCategory]=useState("");
-  const navigate=useNavigate();
+
+function Pallete({category,items}) {
   const handleOnClick=()=>{
     
   }
   return (
     <>
-      <Card onClick={handleOnClick}>
+      <Card onClick={handleOnClick} className="mb-3" style={{height:"310px"}}>
         <Card.Header className="center-space cardheader">
           <Container>
             <Row>
               <Col className="col-12 col-sm-9">
-                <h5>Top Deals | Extra 10% off with Prime</h5>
+                <h5>Top Deals | {category}</h5>
               </Col>
               <Col className="col-3 col-sm-3 ">
                 <NavLink
@@ -35,17 +33,12 @@ function Pallete() {
           <Row >
             <Col>
               <Card.Body className="d-flex flex-row flex-nowrap overflow-auto gap-1 items-container">
-                <Items />
-                <Items />
-                <Items />
-                <Items />
-                <Items />
-                <Items />
-                <Items />
-                <Items />
-                <Items />
-                <Items />
-                <Items />
+                {items.map((item)=>{
+                  return (
+
+                    <Items name={item.name} price={item.price} img={item.img} />
+                  );
+                })}
               </Card.Body>
             </Col>
           </Row>

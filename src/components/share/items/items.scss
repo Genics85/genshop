@@ -8,3 +8,7 @@
         @include box-shadow;
     }
 }
+.span-texts{
+    display: flex;
+    flex-direction: column;
+}
