@@ -15,20 +15,18 @@ function Shelve() {
     await axios.get(`/product/${category}`).then((response) => {
       const listItems = response.data;
       setItems(listItems);
-      console.log(items);
     });
   };
 
   useEffect(() => {
     getProducts();
-    console.log(items);
   }, []);
   return (
     <main>
       <Container className="shelve p-3">
-        {items.map((item) => {
+        {items.map((item,i) => {
           return (
-            <Col className="col-12 col-md-3 mb-4">
+            <Col className="col-12 col-md-3 mb-4" key={i}>
               <SingleProduct
                 price={item.price}
                 name={item.name}

@@ -1,8 +1,16 @@
 import "./singleProduct.scss";
 import { Card, Col, Image, Button } from "react-bootstrap";
+import { useCart} from "../../hooks/useCart";
 
 
 function SingleProduct({name,price,img}) {
+
+  const {cart,setCart}=useCart();
+
+  const handleAddToCart=()=>{
+    setCart((cart)=>cart.push({name,price,img}));
+    console.log(cart.length);
+  }
   return (
     <div className="center">
           <Col className="col-11">
@@ -21,7 +29,7 @@ function SingleProduct({name,price,img}) {
               </p>
               <div className="d-flex gap-3">
                 <Button className="buy-button">Buy</Button>
-                <Button className="add-to-cart">Add to Cart</Button>
+                <Button onClick={handleAddToCart} className="add-to-cart">Add to Cart</Button>
               </div>
             </Card>
           </Col>

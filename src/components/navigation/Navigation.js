@@ -16,8 +16,12 @@ import {
 } from "react-bootstrap-icons";
 import "./navigation.scss";
 import { Link, NavLink } from "react-router-dom";
+import { useCart } from "../../hooks/useCart";
 
 function Navigation() {
+
+  const {cart}=useCart();
+
   return (
     <>
       <header className="bg-light d-none d-sm-block">
@@ -70,7 +74,7 @@ function Navigation() {
           </Navbar.Brand>
           <Link to="/cart" className="cart-button d-block d-lg-none">
             <Cart3 size={"30px"} className=" cart-icon text-white mx-2" />
-            <span className="cart-badge center">4</span>
+            <span className="cart-badge center">{cart.length}</span>
           </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
 
@@ -112,7 +116,7 @@ function Navigation() {
           </Navbar.Collapse>
           <Link to="/cart" className="cart-button d-none d-lg-block mx-3">
             <Cart3 size={"30px"} className=" cart-icon text-white mx-2" />
-            <span className="cart-badge center">3</span>
+            <span className="cart-badge center">{cart.length}</span>
           </Link>
         </Container>
       </Navbar>
