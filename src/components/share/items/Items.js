@@ -6,7 +6,7 @@ function Items({name,price,img}) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/product",{items:{name,price,img}});
+    navigate("/product", {state:{name,price,img}});
   };
 
   return (

@@ -12,16 +12,16 @@ import "./product.scss";
 function Product() {
 
   const location=useLocation();
-  const {items}=location;
+  const {state}=location;
 
-  const [number, setNumber] = useState(0);
+  const [number, setNumber] = useState(1);
 
   const handleAdd = () => {
     setNumber(number + 1);
-    console.log(items)
+    console.log(state)
   };
   const handleRemove = () => {
-    if (number < 1) return;
+    if (number < 2) return;
     setNumber(number - 1);
   };
 
@@ -33,7 +33,7 @@ function Product() {
             <Image
               className="mb-3"
               width={"60%"}
-              src="https://gh.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/06/004223/1.jpg?0775"
+              src={state.img}
             />
             <div className="buttons d-flex my-2">
               <Button onClick={handleAdd}>
@@ -47,8 +47,8 @@ function Product() {
             <h4>{number}</h4>
           </Col>
           <Col className="col-12 col-lg-5 center flex-column">
-            <h4>Golden Morn</h4>
-            <h5>$3.99</h5>
+            <h4>{state.name}</h4>
+            <h5>$ {state.price}</h5>
             <div className=" col-12 d-flex gap-2 my-3">
               <Button className="add-to-cart w-50">Add to cart</Button>
               <Button className="make-payment w-50"> Make Payment</Button>
