@@ -20,12 +20,8 @@ import { useCart } from "../../hooks/useCart";
 import { useEffect, useState } from "react";
 
 function Navigation() {
-  const [itemsNumber, setItemsNumber] = useState(0);
-  const { cart, addToCart } = useCart();
-  
-  useEffect(() => {
-    setItemsNumber(cart.length);
-  }, [itemsNumber]);
+  const { numberOfItems} = useCart();
+
 
   return (
     <>  
@@ -79,7 +75,7 @@ function Navigation() {
           </Navbar.Brand>
           <Link to="/cart" className="cart-button d-block d-lg-none">
             <Cart3 size={"30px"} className=" cart-icon text-white mx-2" />
-            <span className="cart-badge center">{cart.length}</span>
+            <span className="cart-badge center">{numberOfItems}</span>
           </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
 
@@ -141,7 +137,7 @@ function Navigation() {
           </Navbar.Collapse>
           <Link to="/cart" className="cart-button d-none d-lg-block mx-3">
             <Cart3 size={"30px"} className=" cart-icon text-white mx-2" />
-            <span className="cart-badge center">{itemsNumber}</span>
+            <span className="cart-badge center">{numberOfItems}</span>
           </Link>
         </Container>
       </Navbar>

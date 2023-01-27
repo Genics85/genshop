@@ -26,9 +26,9 @@ function Shelve() {
   return (
     <main>
       <Container className="shelve p-3">
-        {items.map((item) => {
+        {items.map((item,i) => {
           return (
-            <Col className="col-12 col-md-3 mb-4">
+            <Col key={i} className="col-12 col-md-3 mb-4">
               <SingleProduct
                 price={item.price}
                 name={item.name}
