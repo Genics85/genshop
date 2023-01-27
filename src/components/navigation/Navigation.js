@@ -17,13 +17,18 @@ import {
 import "./navigation.scss";
 import { Link, NavLink } from "react-router-dom";
 import { useCart } from "../../hooks/useCart";
+import { useEffect, useState } from "react";
 
 function Navigation() {
-
-  const {cart}=useCart();
+  const [itemsNumber, setItemsNumber] = useState(0);
+  const { cart, addToCart } = useCart();
+  
+  useEffect(() => {
+    setItemsNumber(cart.length);
+  }, [itemsNumber]);
 
   return (
-    <>
+    <>  
       <header className="bg-light d-none d-sm-block">
         <Container>
           <Row className="header-info">
@@ -84,23 +89,43 @@ function Navigation() {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link as={NavLink} to="" >
+              <Nav.Link as={NavLink} to="">
                 Home
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/groceries" state={{category:"grocery"}}>
+              <Nav.Link
+                as={NavLink}
+                to="/groceries"
+                state={{ category: "grocery" }}
+              >
                 Groceries
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/electronics" state={{category:"electronics"}}>
+              <Nav.Link
+                as={NavLink}
+                to="/electronics"
+                state={{ category: "electronics" }}
+              >
                 Electronics
               </Nav.Link>
 
-              <Nav.Link as={NavLink} to="/health&beauty" state={{category:"health"}}>
+              <Nav.Link
+                as={NavLink}
+                to="/health&beauty"
+                state={{ category: "health" }}
+              >
                 Health & Beauty
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/fashion" state={{category:"fashion"}}>
+              <Nav.Link
+                as={NavLink}
+                to="/fashion"
+                state={{ category: "fashion" }}
+              >
                 Fashion
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/home&office" state={{category:"home"}} >
+              <Nav.Link
+                as={NavLink}
+                to="/home&office"
+                state={{ category: "home" }}
+              >
                 Home & Office
               </Nav.Link>
             </Nav>
@@ -116,7 +141,7 @@ function Navigation() {
           </Navbar.Collapse>
           <Link to="/cart" className="cart-button d-none d-lg-block mx-3">
             <Cart3 size={"30px"} className=" cart-icon text-white mx-2" />
-            <span className="cart-badge center">{cart.length}</span>
+            <span className="cart-badge center">{itemsNumber}</span>
           </Link>
         </Container>
       </Navbar>

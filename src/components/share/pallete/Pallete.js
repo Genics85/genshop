@@ -22,7 +22,7 @@ function Pallete({category,items}) {
                   to="/groceries"
                   className="d-flex align-items-center end"
                 >
-                  <p className="mb-0 ">SEE ALL  </p>
+                  <p className="mb-0 ">SEE ALL </p>
                   <CaretRight />
                 </NavLink>
               </Col>
@@ -33,10 +33,10 @@ function Pallete({category,items}) {
           <Row >
             <Col>
               <Card.Body className="d-flex flex-row flex-nowrap overflow-auto gap-1 items-container">
-                {items.map((item)=>{
+                {items.map((item,i)=>{
                   return (
 
-                    <Items name={item.name} price={item.price} img={item.img} />
+                    <Items key={i} name={item.name} price={item.price} img={item.img} />
                   );
                 })}
               </Card.Body>

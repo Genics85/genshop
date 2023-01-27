@@ -15,13 +15,11 @@ function Shelve() {
     await axios.get(`/product/${category}`).then((response) => {
       const listItems = response.data;
       setItems(listItems);
-      console.log(items);
     });
   };
 
   useEffect(() => {
     getProducts();
-    console.log(items);
   }, []);
   return (
     <main>
