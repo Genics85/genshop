@@ -1,6 +1,6 @@
 import "./cart.scss";
 import { useState } from "react";
-import { Button, Col, Image } from "react-bootstrap";
+import { Button, Col} from "react-bootstrap";
 import { Dash, Plus, Trash } from "react-bootstrap-icons";
 import { useCart } from "../../hooks/useCart";
 
@@ -13,17 +13,14 @@ function CartItem({ name, price, img }) {
   };
 
   const handleAdd = () => {
-    setCounter(counter + 1);
-    changeItemCounter({img,counter});
-    console.log(counter);
-    console.log(cart)
+    setCounter(counter=>counter + 1);
+    changeItemCounter({img,counter:counter+1});
   };
 
   const handleRemove = () => {
     if (counter <=1) return;
-    setCounter(counter - 1);
-    changeItemCounter({img,counter});
-    console.log(cart)
+    setCounter(counter=>counter - 1);
+    changeItemCounter({img,counter:counter-1});
 
   };
 

@@ -6,18 +6,18 @@ export const CartProvider = ({ children }) => {
   const [numberOfItems, setNumberOfItems] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
 
-  const changeItemCounter=(item)=>{
-    let object=cart.findIndex((obj=>obj.img==item.img));
-    cart[object].counter=item.counter;
-    console.log(cart[object].counter);
-  }
+  const changeItemCounter = (item) => {
+    let object = cart.findIndex((obj) => obj.img == item.img);
+    cart[object].counter = item.counter;
+    calculateTotalAmount(cart);
+  };
 
   const calculateTotalAmount = (items) => {
-    let total=0;
-    items.forEach((item)=>{
-      total= parseInt(item.price*item.counter)+total;
-    })
-   setTotalAmount(total);
+    let total = 0;
+    items.forEach((item) => {
+      total = parseInt(item.counter*item.price) + total;
+    });
+    setTotalAmount(total);
   };
 
   const addToCart = (item) => {
@@ -39,12 +39,18 @@ export const CartProvider = ({ children }) => {
     let newCart = cart.filter((product) => product.img != img);
     calculateTotalAmount(newCart);
     setCart(newCart);
-
   };
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, numberOfItems,totalAmount,changeItemCounter }}
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        numberOfItems,
+        totalAmount,
+        changeItemCounter,
+      }}
     >
       {children}
     </CartContext.Provider>
