@@ -1,14 +1,18 @@
 import { Container, Col, Row, Form, Button } from "react-bootstrap";
 import "./cart.scss";
 import CartItem from "./CartItem";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { useCart } from "../../hooks/useCart";
 
 function Cart() {
-  const{cart,numberOfItems}=useCart();
-  useEffect(()=>{
-    console.log(numberOfItems)
-  },[])
+  
+  const{cart,numberOfItems,totalAmount}=useCart();
+
+  const[deliveryCost,setDeliveryCost]=useState("5");
+
+  const handleDeliveryCost=(e)=>{
+    setDeliveryCost(e.target.value);
+  }
 
   return (
     <main className="cart pt-5">
@@ -28,18 +32,17 @@ function Cart() {
             <hr style={{ border: "solid grey 2px" }} />
             <div className="center-space my-3">
               <h5>items {numberOfItems}</h5>
-              <h5>$2.99</h5>
+              <h5>${totalAmount}</h5>
             </div>
             <Form.Label>SHIPPING</Form.Label>
-            <Form.Select>
-              <option>Select Delivery type here</option>
-              <option value="fashion">Standard Delivery $5</option>
-              <option value="homeandoffice">Express Delivery $7</option>
-              <option value="grocery">Low budget Delivery $3</option>
+            <Form.Select onChange={handleDeliveryCost}>
+              <option value="5">Standard Delivery $5</option>
+              <option value="7">Express Delivery $7</option>
+              <option value="3">Low budget Delivery $3</option>
             </Form.Select>
             <div className="center-space my-3">
               <h5>TOTAL PRICE</h5>
-              <h5>$45</h5>
+              <h5>${totalAmount+parseInt(deliveryCost)}</h5>
             </div>
             <Button className="checkout-button w-100 my-3">CHECKOUT</Button>
           </Col>

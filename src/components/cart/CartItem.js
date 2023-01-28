@@ -7,11 +7,12 @@ import { useCart } from "../../hooks/useCart";
 function CartItem({name,price,img}) {
 
   const{removeFromCart}=useCart();
-  
+
   const handleRemoveFromCart=()=>{
     removeFromCart(img);
   }
     const[counter,setCounter]=useState(1);
+
     const handleAdd=()=>{
         setCounter(counter+1);
     }
@@ -39,7 +40,7 @@ function CartItem({name,price,img}) {
           <Dash size={"20px"} />
         </Button>
       </div>
-      <h5>${price}</h5>
+      <h5>${price*counter}</h5>
       <Button>
         <Trash onClick={handleRemoveFromCart} />
       </Button>
