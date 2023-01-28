@@ -6,10 +6,16 @@ export const CartProvider = ({ children }) => {
   const [numberOfItems, setNumberOfItems] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
 
+  const changeItemCounter=(item)=>{
+    let object=cart.findIndex((obj=>obj.img==item.img));
+    cart[object].counter=item.counter;
+    console.log(cart[object].counter);
+  }
+
   const calculateTotalAmount = (items) => {
     let total=0;
     items.forEach((item)=>{
-      total= parseInt(item.price)+total;
+      total= parseInt(item.price*item.counter)+total;
     })
    setTotalAmount(total);
   };
@@ -38,7 +44,7 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, numberOfItems,totalAmount }}
+      value={{ cart, addToCart, removeFromCart, numberOfItems,totalAmount,changeItemCounter }}
     >
       {children}
     </CartContext.Provider>

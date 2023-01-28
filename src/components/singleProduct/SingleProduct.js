@@ -5,10 +5,11 @@ import { useCart} from "../../hooks/useCart";
 
 function SingleProduct({name,price,img}) {
 
-  const {numberOfItems,addToCart}=useCart();
+  const {numberOfItems,addToCart,cart}=useCart();
 
   const handleAddToCart=()=>{
-    addToCart({name,price,img});
+    addToCart({name,price,img,counter:1});
+    console.log(cart)
   }
 
   return (
