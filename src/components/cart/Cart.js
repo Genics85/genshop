@@ -19,11 +19,11 @@ function Cart() {
               <h4>Shopping Cart</h4>
               <h5>{numberOfItems} items</h5>
             </div>
-            <CartItem />
-            <CartItem />
-            <CartItem />
+            {cart.map((product,i)=>{
+              return <CartItem key={i} name={product.name} price={product.price} img={product.img}/>
+            })}
           </Col>
-          <Col className="right col-12 col-lg-5">
+          <Col className=" checkout-bar right col-12 col-lg-5 ">
             <h5>Summary</h5>
             <hr style={{ border: "solid grey 2px" }} />
             <div className="center-space my-3">

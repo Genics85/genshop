@@ -2,8 +2,15 @@ import "./cart.scss";
 import { useState } from "react";
 import { Button, Col, Image } from "react-bootstrap";
 import { Dash, Plus, Trash } from "react-bootstrap-icons";
+import { useCart } from "../../hooks/useCart";
 
-function CartItem() {
+function CartItem({name,price,img}) {
+
+  const{removeFromCart}=useCart();
+  
+  const handleRemoveFromCart=()=>{
+    removeFromCart(img);
+  }
     const[counter,setCounter]=useState(1);
     const handleAdd=()=>{
         setCounter(counter+1);
@@ -15,14 +22,13 @@ function CartItem() {
 
   return (
     <Col className="cart-item center-space">
-      <Image
+      <img
         className="mb-3"
-        width={"18%"}
-        src="https://gh.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/06/004223/1.jpg?0775"
+        src={img}
+        height={"110px"}
       />
       <div className="description">
-        <p>Cereal</p>
-        <h5>Golden Morn</h5>
+        <h5>{name}</h5>
       </div>
       <div className="number-button d-flex gap-2">
         <Button className="number-change" onClick={handleAdd}>
@@ -33,9 +39,9 @@ function CartItem() {
           <Dash size={"20px"} />
         </Button>
       </div>
-      <h5>$2.99</h5>
+      <h5>${price}</h5>
       <Button>
-        <Trash />
+        <Trash onClick={handleRemoveFromCart} />
       </Button>
     </Col>
   );

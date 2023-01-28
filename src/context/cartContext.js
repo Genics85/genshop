@@ -17,11 +17,17 @@ export const CartProvider = ({ children }) => {
     cart.push(item);
     setCart(cart)
     setNumberOfItems(cart.length);
-    console.log(cart)
+  }
+
+  const removeFromCart=(img)=>{
+    setNumberOfItems(cart.length-1);
+    let newCart=cart.filter((product)=>product.img!=img);
+    setCart(newCart);
+    console.log("removing in progress")
   }
   
   return (
-    <CartContext.Provider value={{ cart,addToCart,numberOfItems}}>
+    <CartContext.Provider value={{ cart,addToCart,removeFromCart,numberOfItems}}>
       {children}
     </CartContext.Provider>
   );

@@ -9,9 +9,8 @@ function SingleProduct({name,price,img}) {
 
   const handleAddToCart=()=>{
     addToCart({name,price,img});
-    console.log(numberOfItems);
   }
-  
+
   return (
     <div className="center">
           <Col className="col-11">
