@@ -11,6 +11,7 @@ function SingleProduct({name,price,img}) {
     addToCart({name,price,img});
     console.log(numberOfItems);
   }
+  
   return (
     <div className="center">
           <Col className="col-11">

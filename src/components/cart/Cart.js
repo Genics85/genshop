@@ -1,16 +1,13 @@
 import { Container, Col, Row, Form, Button } from "react-bootstrap";
 import "./cart.scss";
 import CartItem from "./CartItem";
-import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { useCart } from "../../hooks/useCart";
 
 function Cart() {
-
-  const location=useLocation();
-  const{state}=location;
-
+  const{cart,numberOfItems}=useCart();
   useEffect(()=>{
-    console.log(state.cart.length)
+    console.log(numberOfItems)
   },[])
 
   return (
@@ -20,7 +17,7 @@ function Cart() {
           <Col className="left col-12 col-lg-7 bg-white">
             <div className="d-flex center-space">
               <h4>Shopping Cart</h4>
-              <h5>{state.cart.length} items</h5>
+              <h5>{numberOfItems} items</h5>
             </div>
             <CartItem />
             <CartItem />
@@ -30,7 +27,7 @@ function Cart() {
             <h5>Summary</h5>
             <hr style={{ border: "solid grey 2px" }} />
             <div className="center-space my-3">
-              <h5>items {state.cart.length}</h5>
+              <h5>items {numberOfItems}</h5>
               <h5>$2.99</h5>
             </div>
             <Form.Label>SHIPPING</Form.Label>

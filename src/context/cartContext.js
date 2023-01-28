@@ -16,14 +16,10 @@ export const CartProvider = ({ children }) => {
     if(present) return;
     cart.push(item);
     setCart(cart)
+    setNumberOfItems(cart.length);
     console.log(cart)
   }
-
-  useEffect(()=>{
-    setNumberOfItems(cart.length);
-    console.log("running change");
-  },[cart]);
-
+  
   return (
     <CartContext.Provider value={{ cart,addToCart,numberOfItems}}>
       {children}
