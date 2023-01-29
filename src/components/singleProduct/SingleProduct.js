@@ -5,11 +5,10 @@ import { useCart} from "../../hooks/useCart";
 
 function SingleProduct({name,price,img}) {
 
-  const {numberOfItems,addToCart,cart}=useCart();
+  const {addToCart,cart}=useCart();
 
   const handleAddToCart=()=>{
     addToCart({name,price,img,counter:1});
-    console.log(cart)
   }
 
   return (
@@ -29,8 +28,7 @@ function SingleProduct({name,price,img}) {
                 $ {price}
               </p>
               <div className="d-flex gap-3">
-                <Button className="buy-button">Buy</Button>
-                <Button onClick={handleAddToCart} className="add-to-cart">Add to Cart</Button>
+                <Button onClick={handleAddToCart} className="w-100 add-to-cart">Add to Cart</Button>
               </div>
             </Card>
           </Col>

@@ -4,7 +4,7 @@ import { CaretRight } from "react-bootstrap-icons";
 import Items from "../items/Items";
 import "./pallete.scss";
 
-function Pallete({category,items}) {
+function Pallete({category,items,path}) {
   const handleOnClick=()=>{
     
   }
@@ -19,7 +19,7 @@ function Pallete({category,items}) {
               </Col>
               <Col className="col-3 col-sm-3 ">
                 <NavLink
-                  to="/groceries"
+                  to={path}
                   className="d-flex align-items-center end"
                 >
                   <p className="mb-0 ">SEE ALL </p>
@@ -36,7 +36,7 @@ function Pallete({category,items}) {
                 {items.map((item,i)=>{
                   return (
 
-                    <Items key={i} name={item.name} price={item.price} img={item.img} />
+                    <Items key={i} name={item.name} price={item.price} img={item.img} path={path}/>
                   );
                 })}
               </Card.Body>

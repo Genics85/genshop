@@ -17,11 +17,9 @@ import {
 import "./navigation.scss";
 import { Link, NavLink } from "react-router-dom";
 import { useCart } from "../../hooks/useCart";
-import { useEffect, useState } from "react";
 
 function Navigation() {
   const { numberOfItems} = useCart();
-
 
   return (
     <>  

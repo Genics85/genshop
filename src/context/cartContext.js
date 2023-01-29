@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 export const CartContext = createContext({});
 
 export const CartProvider = ({ children }) => {
@@ -7,7 +7,7 @@ export const CartProvider = ({ children }) => {
   const [totalAmount, setTotalAmount] = useState(0);
 
   const changeItemCounter = (item) => {
-    let object = cart.findIndex((obj) => obj.img == item.img);
+    let object = cart.findIndex((obj) => obj.img === item.img);
     cart[object].counter = item.counter;
     calculateTotalAmount(cart);
   };
@@ -36,7 +36,7 @@ export const CartProvider = ({ children }) => {
 
   const removeFromCart = (img) => {
     setNumberOfItems(cart.length - 1);
-    let newCart = cart.filter((product) => product.img != img);
+    let newCart = cart.filter((product) => product.img !== img);
     calculateTotalAmount(newCart);
     setCart(newCart);
   };

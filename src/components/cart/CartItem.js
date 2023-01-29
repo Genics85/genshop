@@ -30,11 +30,11 @@ function CartItem({ name, price, img }) {
       <div className="description">
         <h5>{name}</h5>
       </div>
-      <div className="number-button d-flex gap-2">
+      <div className="number-button d-flex gap-2 center">
         <Button className="number-change" onClick={handleAdd}>
           <Plus size={"20px"} />
         </Button>
-        <h5>{counter}</h5>
+        <h5 className="mt-2">{counter}</h5>
         <Button className="number-change" onClick={handleRemove}>
           <Dash size={"20px"} />
         </Button>

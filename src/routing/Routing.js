@@ -14,7 +14,6 @@ import UnAuthorized from "../components/unAuthorized/UnAuthorized";
 import Product from "../components/product/Product";
 import Cart from "../components/cart/Cart";
 import Electronics from "../components/electronics/Electronics";
-import { CartProvider } from "../context/cartContext";
 
 export const EntryRouting = () => {
   return (

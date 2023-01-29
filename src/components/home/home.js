@@ -56,11 +56,11 @@ function Home() {
         <Row>
           <Col>
             <p>Home</p>
-            <Pallete category={"Groceries"} items={grocery}/>
-            <Pallete category={"Electronics"} items={electronics} />
-            <Pallete category={"Health & Beauty"} items={health} />
-            <Pallete category={"Fashion"} items={fashion}/>
-            <Pallete category={"Home & Office"} items={home}/>
+            <Pallete category={"Groceries"} items={grocery} path={"groceries"}/>
+            <Pallete category={"Electronics"} items={electronics} path={"electronics"}/>
+            <Pallete category={"Health & Beauty"} items={health} path={"health&beauty"}/>
+            <Pallete category={"Fashion"} items={fashion} path={"fashion"}/>
+            <Pallete category={"Home & Office"} items={home} path={"home&office"}/>
           </Col>
         </Row>
       </Container>

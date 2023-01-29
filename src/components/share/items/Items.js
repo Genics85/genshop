@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { Card, Container, Row, Col } from "react-bootstrap";
 import "./items.scss";
 
-function Items({name,price,img}) {
+function Items({name,price,img,path}) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/product", {state:{name,price,img}});
+    navigate(`/${path}`, {state:{name,price,img}});
   };
 
   return (

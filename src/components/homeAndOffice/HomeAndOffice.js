@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import {useLocation} from "react-router-dom"
 import { Col, Container} from "react-bootstrap";
 import axios from "../../api/axios";
 import SingleProduct from "../singleProduct/SingleProduct";
@@ -7,21 +6,15 @@ import SingleProduct from "../singleProduct/SingleProduct";
 function Shelve() {
   const [items, setItems] = useState([]);
 
-  const location=useLocation();
-  const {state}= location;
-  const category=state.category;
-
   const getProducts = async () => {
-    await axios.get(`/product/${category}`).then((response) => {
+    await axios.get(`/product/health`).then((response) => {
       const listItems = response.data;
       setItems(listItems);
-      console.log(items);
     });
   };
 
   useEffect(() => {
     getProducts();
-    console.log(items);
   }, []);
   return (
     <main>
