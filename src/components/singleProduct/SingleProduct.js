@@ -28,7 +28,7 @@ function SingleProduct({name,price,img}) {
                 $ {price}
               </p>
               <div className="d-flex gap-3">
-                <Button onClick={handleAddToCart} className="w-100 add-to-cart">Add to Cart</Button>
+                <Button onClick={handleAddToCart} className="add-cart px-5">ADD TO CART</Button>
               </div>
             </Card>
           </Col>
