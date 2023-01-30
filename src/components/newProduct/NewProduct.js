@@ -43,6 +43,7 @@ function NewProduct() {
   }
 
   const handleSubmit = async (e) => {
+    setSuccess(false);
     e.preventDefault();
     const config = {
       headrs: {
