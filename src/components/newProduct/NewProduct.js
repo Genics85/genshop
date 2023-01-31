@@ -8,6 +8,7 @@ import {
   Card,
   Button,
   Alert,
+  Spinner
 } from "react-bootstrap";
 import axios from "../../api/axios";
 
@@ -17,6 +18,7 @@ function NewProduct() {
   const [category, setCategory] = useState("fashion");
   const [image, setImage] = useState(null);
   const [success, setSuccess] = useState(false);
+  const [loading,setLoading]=useState(false);
 
   const formData = new FormData();
   formData.append("image", image);
@@ -44,6 +46,7 @@ function NewProduct() {
 
   const handleSubmit = async (e) => {
     setSuccess(false);
+    setLoading(true);
     e.preventDefault();
     const config = {
       headrs: {
@@ -53,6 +56,7 @@ function NewProduct() {
     try {
       const response = await axios.post("/product/upload", formData, config);
       if (response) setSuccess(true);
+      setLoading(false)
       clearInputs();
     } catch (error) {
       console.log(error);
@@ -120,7 +124,9 @@ function NewProduct() {
                   />
                 </Form.Group>
                 <Form.Group className="mb-3 center">
-                  <Button type="submit">Add Product</Button>
+                  <Button type="submit">
+                    {loading? <Spinner animation="border" role="status"/>:<span>Add Product</span>}
+                  </Button>
                 </Form.Group>
               </Form>
             </Card>

@@ -10,6 +10,7 @@ function Home() {
   const [home,setHome]=useState([]);
   const [health,setHealth]=useState([]);
   const [electronics,setElectronics]=useState([]);
+  const [loading,setLoading]=useState(true);
 
   const getFashion = async () => {
     await axios.get(`/product/fashion`).then((response) => {
@@ -48,6 +49,7 @@ function Home() {
     getElectronics();
     getFashion();
     getGrocery();
+    setLoading(false);
   },[]);
 
   return (
@@ -56,11 +58,11 @@ function Home() {
         <Row>
           <Col>
             <p>Home</p>
-            <Pallete category={"Groceries"} items={grocery} path={"groceries"}/>
-            <Pallete category={"Electronics"} items={electronics} path={"electronics"}/>
-            <Pallete category={"Health & Beauty"} items={health} path={"health&beauty"}/>
-            <Pallete category={"Fashion"} items={fashion} path={"fashion"}/>
-            <Pallete category={"Home & Office"} items={home} path={"home&office"}/>
+            <Pallete category={"Groceries"} items={grocery} path={"groceries"} loading={loading}/>
+            <Pallete category={"Electronics"} items={electronics} path={"electronics" } loading={loading}/>
+            <Pallete category={"Health & Beauty"} items={health} path={"health&beauty"} loading={loading}/>
+            <Pallete category={"Fashion"} items={fashion} path={"fashion"} loading={loading}/>
+            <Pallete category={"Home & Office"} items={home} path={"home&office"} loading={loading}/>
           </Col>
         </Row>
       </Container>

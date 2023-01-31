@@ -1,18 +1,15 @@
-import { Card, Container, Row, Col } from "react-bootstrap";
+import { Card, Container, Row, Col, Spinner } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { CaretRight } from "react-bootstrap-icons";
+import { useState } from "react";
 import Items from "../items/Items";
 import "./pallete.scss";
 
-function Pallete({ category, items, path }) {
-  const handleOnClick = () => {};
+function Pallete({ category, items, path,loading }) {
+
   return (
     <>
-      <Card
-        onClick={() => handleOnClick}
-        style={{ height: "310px" }}
-        className="mb-3"
-      >
+      <Card style={{ height: "310px" }} className="mb-3">
         <Card.Header className="center-space cardheader">
           <Container>
             <Row>
@@ -21,7 +18,7 @@ function Pallete({ category, items, path }) {
               </Col>
               <Col className="col-3 col-sm-3 ">
                 <NavLink to={path} className="d-flex align-items-center end">
-                  <p className="mb-0 ">SEE ALL </p>
+                  <span className="mb-0 see-all">SEE ALL</span>
                   <CaretRight />
                 </NavLink>
               </Col>
@@ -31,18 +28,22 @@ function Pallete({ category, items, path }) {
         <Container className="pallete-body">
           <Row>
             <Col>
-              <Card.Body className="d-flex flex-row flex-nowrap overflow-auto gap-1 items-container">
-                {items.map((item, i) => {
-                  return (
-                    <Items
-                      key={i}
-                      name={item.name}
-                      price={item.price}
-                      img={item.img}
-                      path={path}
-                    />
-                  );
-                })}
+              <Card.Body className={`d-flex flex-row flex-nowrap overflow-auto gap-1 items-container ${loading? "center":""} `}>
+                {loading ? (
+                  <Spinner animation="border" role="status" className="center" />
+                ) : (
+                  items.map((item, i) => {
+                    return (
+                      <Items
+                        key={i}
+                        name={item.name}
+                        price={item.price}
+                        img={item.img}
+                        path={path}
+                      />
+                    );
+                  })
+                )}
               </Card.Body>
             </Col>
           </Row>
