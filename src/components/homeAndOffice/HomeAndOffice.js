@@ -7,7 +7,7 @@ function Shelve() {
   const [items, setItems] = useState([]);
 
   const getProducts = async () => {
-    await axios.get(`/product/health`).then((response) => {
+    await axios.get(`/product/home`).then((response) => {
       const listItems = response.data;
       setItems(listItems);
     });

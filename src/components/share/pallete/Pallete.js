@@ -1,16 +1,18 @@
 import { Card, Container, Row, Col } from "react-bootstrap";
-import { NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { CaretRight } from "react-bootstrap-icons";
 import Items from "../items/Items";
 import "./pallete.scss";
 
-function Pallete({category,items,path}) {
-  const handleOnClick=()=>{
-    
-  }
+function Pallete({ category, items, path }) {
+  const handleOnClick = () => {};
   return (
     <>
-      <Card onClick={handleOnClick} className="mb-3" style={{height:"310px"}}>
+      <Card
+        onClick={() => handleOnClick}
+        style={{ height: "310px" }}
+        className="mb-3"
+      >
         <Card.Header className="center-space cardheader">
           <Container>
             <Row>
@@ -18,10 +20,7 @@ function Pallete({category,items,path}) {
                 <h5>Top Deals | {category}</h5>
               </Col>
               <Col className="col-3 col-sm-3 ">
-                <NavLink
-                  to={path}
-                  className="d-flex align-items-center end"
-                >
+                <NavLink to={path} className="d-flex align-items-center end">
                   <p className="mb-0 ">SEE ALL </p>
                   <CaretRight />
                 </NavLink>
@@ -30,13 +29,18 @@ function Pallete({category,items,path}) {
           </Container>
         </Card.Header>
         <Container className="pallete-body">
-          <Row >
+          <Row>
             <Col>
               <Card.Body className="d-flex flex-row flex-nowrap overflow-auto gap-1 items-container">
-                {items.map((item,i)=>{
+                {items.map((item, i) => {
                   return (
-
-                    <Items key={i} name={item.name} price={item.price} img={item.img} path={path}/>
+                    <Items
+                      key={i}
+                      name={item.name}
+                      price={item.price}
+                      img={item.img}
+                      path={path}
+                    />
                   );
                 })}
               </Card.Body>

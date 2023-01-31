@@ -14,7 +14,7 @@ import axios from "../../api/axios";
 function NewProduct() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("fashion");
   const [image, setImage] = useState(null);
   const [success, setSuccess] = useState(false);
 
