@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Card, Image, Button, Alert } from "react-bootstrap";
+import { Col, Container, Card, Image, Button } from "react-bootstrap";
 import axios from "../../api/axios";
-import SingleProduct from "../singleProduct/SingleProduct";
 
 function Shelve() {
   const [items, setItems] = useState([]);
@@ -25,7 +24,6 @@ function Shelve() {
 
   useEffect(() => {
     getProducts();
-    console.log("useEffect")
   }, [deleted]);
 
   return (

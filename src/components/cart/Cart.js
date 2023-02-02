@@ -1,7 +1,7 @@
 import { Container, Col, Row, Form, Button } from "react-bootstrap";
 import "./cart.scss";
 import CartItem from "./CartItem";
-import { useEffect,useState } from "react";
+import {useState } from "react";
 import { useCart } from "../../hooks/useCart";
 
 function Cart() {
