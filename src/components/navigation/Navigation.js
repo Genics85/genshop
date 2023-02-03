@@ -29,11 +29,11 @@ function Navigation() {
             <Col className="center gap-3 header-contact">
               <a className="center gap-1" href="nothing.com">
                 <Telephone />
-                <p className="text-center mb-0">+345678123</p>
+                <p className="text-center mb-0">+233547800363</p>
               </a>
               <a className="center gap-1" href="nothing.com">
                 <EnvelopeAt />
-                <p className="mb-0">info@breakingnews.com</p>
+                <p className="mb-0">eugeneamo85@gmail.com</p>
               </a>
             </Col>
             <Col className="center gap-2 header-socials">
