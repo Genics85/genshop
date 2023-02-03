@@ -11,13 +11,13 @@ function Shelve() {
     await axios.get(`/product/home`).then((response) => {
       const listItems = response.data;
       setItems(listItems);
-      if(listItems.lenght>1)setLoading(false);
-
+      
     });
   };
-
+  
   useEffect(() => {
     getProducts();
+    setLoading(false);
   }, []);
   return (
     <main>
