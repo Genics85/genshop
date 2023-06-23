@@ -85,7 +85,7 @@ function Login() {
       <Container>
         <Row className="vh-100 center">
           <Col className="left d-none d-md-block col-6 ">
-            <h1 className="center heading">ONLINE SHOPPING</h1>
+            <h1 className="center heading">WELCOME TO GENICS SHOP</h1>
             <p align="center">
               Cupidatat tempor magna laboris aliquip laborum incididunt ad
               cupidatat quis adipisicing mollit aliqua ullamco in.

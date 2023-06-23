@@ -22,13 +22,13 @@ export const EntryRouting = () => {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
 
-        {/* <Route element={<RequireAuth allowedRoles={["admin"]} />}> */}
+        <Route element={<RequireAuth allowedRoles={["admin"]} />}>
         <Route exact path="/newproduct" element={<NewProduct />} />
-        {/* </Route> */}
+        </Route>
 
-        {/* <Route
+        <Route
           element={<RequireAuth allowedRoles={["user", "admin", "seller"]} />}
-        > */}
+        >
         
           <Route exact path="/" element={<LandingPage />}>
             <Route exact path="" element={<Home />} />
@@ -41,7 +41,7 @@ export const EntryRouting = () => {
             <Route exact path="cart" element={<Cart />} />
           </Route>
         
-        {/* </Route> */}
+        </Route>
 
         <Route exact path="/unauthorized" element={<UnAuthorized />} />
         <Route exact path="*" element={<Missing />} />
