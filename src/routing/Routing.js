@@ -29,7 +29,6 @@ export const EntryRouting = () => {
         <Route
           element={<RequireAuth allowedRoles={["user", "admin", "seller"]} />}
         >
-        
           <Route exact path="/" element={<LandingPage />}>
             <Route exact path="" element={<Home />} />
             <Route exact path="groceries" element={<Groceries />} />

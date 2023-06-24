@@ -6,9 +6,9 @@ function UnAuthorized() {
     const navigate=useNavigate();
     const goBack=()=> navigate(-1);
   return (
-    <div>
+    <div className="unauthorized">
         <h2>UnAuthorized</h2>
-        <button onClick={goBack}>Go Back</button>
+        <button className='btn btn-primary text-white' onClick={goBack}>Go Back</button>
     </div>
   )
 }
